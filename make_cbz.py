@@ -1,3 +1,4 @@
+# 依赖zip p7zip-full
 import hashlib
 import os
 import random
@@ -6,24 +7,6 @@ import subprocess
 class ZipAndRenameFilesToCBZ:
     def __init__(self, directory):
         self.directory = directory
-
-        # 检查zip是否已安装
-        cmd = ["dpkg", "-s", "zip"]
-        result = subprocess.run(cmd, stdout=subprocess.PIPE)
-        if result.returncode != 0:
-            print("依赖:zip未安装，正在安装...")
-            os.system("sudo apt-get install -y zip")
-        else:
-            print("依赖:zip已安装！")
-
-        # 检查p7zip-full是否已安装
-        cmd = ["dpkg", "-s", "p7zip-full"]
-        result = subprocess.run(cmd, stdout=subprocess.PIPE)
-        if result.returncode != 0:
-            print("依赖:p7zip-full未安装，正在安装...")
-            os.system("sudo apt-get install -y p7zip-full")
-        else:
-            print("依赖:p7zip-full已安装！")
 
     def zip_folder(self, folder):
         # 生成zip压缩包的名称
